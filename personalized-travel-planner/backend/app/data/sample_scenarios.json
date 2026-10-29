@@ -1,0 +1,681 @@
+{
+  "scenario_1": {
+    "id": "scenario-1-solo-weekend",
+    "name": "Solo Traveler Weekend Getaway",
+    "description": "A quick, efficient, budget-friendly weekend exploration maximizing sightseeing and local food without transit friction.",
+    "preferences": {
+      "destination": "Barcelona, Spain",
+      "start_date": "2026-11-14",
+      "end_date": "2026-11-16",
+      "duration_days": 2,
+      "traveler_type": "solo",
+      "group_size": 1,
+      "budget_tier": "balanced",
+      "total_budget": 650.0,
+      "pacing": "balanced",
+      "interests": ["sightseeing", "food", "architecture", "photography"],
+      "accommodation_preference": "hotel",
+      "dietary_restrictions": ["none"]
+    },
+    "itinerary": {
+      "id": "itinerary-solo-barcelona-01",
+      "title": "Solo Explorer: Vibrant Barcelona in 48 Hours",
+      "destination": "Barcelona, Spain",
+      "trip_summary": "An optimized 2-day solo itinerary connecting Antoni Gaudí's architectural marvels, lively tapas markets, and panoramic coastal views with low transit overhead.",
+      "traveler_type": "solo",
+      "duration_days": 2,
+      "dates": "Nov 14, 2026 - Nov 16, 2026",
+      "pacing": "balanced",
+      "budget_breakdown": {
+        "currency": "USD",
+        "attractions": 85.0,
+        "dining": 140.0,
+        "accommodation": 220.0,
+        "transportation": 35.0,
+        "miscellaneous": 40.0,
+        "total_estimated": 520.0,
+        "budget_limit": 650.0,
+        "remaining_balance": 130.0,
+        "is_within_budget": true
+      },
+      "logistics": {
+        "best_transit_mode": "Metro T-Casual card & walking",
+        "airport_transfer_tip": "Take the Aerobús directly to Plaça de Catalunya (approx 35 mins, €6.75).",
+        "local_transport_pass": "10-journey T-Casual metro ticket covers all city center zones.",
+        "packing_tips": ["Comfortable walking sneakers", "Cross-body anti-theft bag", "Type C/F travel adapter"],
+        "safety_notes": "Barcelona is very safe for solo travelers; stay mindful of personal belongings around Las Ramblas and crowded metro stations."
+      },
+      "days": [
+        {
+          "day_number": 1,
+          "date": "2026-11-14",
+          "theme": "Gaudí Masterpieces & Gothic Quarter Secrets",
+          "summary": "Begin with the breathtaking Sagrada Família, stroll through Passeig de Gràcia, and wrap up with tapas in the medieval Gothic Quarter.",
+          "day_estimated_cost": 270.0,
+          "activities": [
+            {
+              "id": "act-s1-1",
+              "time_slot": "Morning",
+              "time_range": "09:00 AM - 11:30 AM",
+              "title": "Basílica de la Sagrada Família",
+              "category": "attraction",
+              "description": "Marvel at Gaudí's soaring basilica interior bathed in morning stained-glass light. Includes audio guide tour.",
+              "location": "C/ de Mallorca, 401, Eixample",
+              "estimated_cost": 34.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Book timed-entry tickets online at least 5 days in advance; morning slots have fewer crowds.",
+              "transit_info": "Sagrada Família Metro Station (L2, L5)",
+              "coordinates": {"lat": 41.4036, "lng": 2.1744}
+            },
+            {
+              "id": "act-s1-2",
+              "time_slot": "Afternoon",
+              "time_range": "12:00 PM - 02:00 PM",
+              "title": "Mercat de la Boqueria & Solo Tapas Lunch",
+              "category": "dining",
+              "description": "Head into Europe's most famous produce market. Grab counter seating at Bar Pinotxo or El Quim de la Boqueria for grilled baby squid and tortilla.",
+              "location": "La Rambla, 91, Ciutat Vella",
+              "estimated_cost": 28.0,
+              "duration_hours": 1.5,
+              "booking_tip": "Counter seats are first-come first-served; perfect for solo travelers.",
+              "transit_info": "15 min metro ride via L3 to Liceu station.",
+              "coordinates": {"lat": 41.3817, "lng": 2.1716}
+            },
+            {
+              "id": "act-s1-3",
+              "time_slot": "Evening",
+              "time_range": "03:30 PM - 06:30 PM",
+              "title": "Gothic Quarter (Barri Gòtic) Photo Walk",
+              "category": "attraction",
+              "description": "Explore labyrinthine cobblestone alleys, the Barcelona Cathedral, Plaça del Rei, and hidden artisan workshops.",
+              "location": "Barri Gòtic, Ciutat Vella",
+              "estimated_cost": 0.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Keep phone charged for photos; golden hour light across the ancient stone facades is incredible.",
+              "transit_info": "3 minute walk from La Rambla.",
+              "coordinates": {"lat": 41.3833, "lng": 2.1764}
+            },
+            {
+              "id": "act-s1-4",
+              "time_slot": "Night",
+              "time_range": "08:00 PM - 10:00 PM",
+              "title": "El Born Tapas & Vermouth Experience",
+              "category": "dining",
+              "description": "Relax at Tapeo or Cal Pep with local Catalan red wine, patatas bravas, and jamón ibérico.",
+              "location": "Carrer de Montcada, El Born",
+              "estimated_cost": 35.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Spanish dinners start after 8:30 PM. Arrive right at opening to claim solo bar spots easily.",
+              "transit_info": "10 minute stroll east from Gothic Quarter.",
+              "coordinates": {"lat": 41.3851, "lng": 2.1812}
+            }
+          ]
+        },
+        {
+          "day_number": 2,
+          "date": "2026-11-15",
+          "theme": "Park Güell Whimsy & Mediterranean Sunset",
+          "summary": "Ascend to Gaudí's whimsical park hillside, descend through the bohemian Gràcia quarter, and celebrate the finale along Barceloneta beach.",
+          "day_estimated_cost": 250.0,
+          "activities": [
+            {
+              "id": "act-s1-5",
+              "time_slot": "Morning",
+              "time_range": "09:30 AM - 12:00 PM",
+              "title": "Park Güell Monumental Zone",
+              "category": "attraction",
+              "description": "Wander among the serpentine mosaic benches, Hansel-and-Gretel porter pavilions, and panoramic sweeping views of the city.",
+              "location": "Gràcia, 08024 Barcelona",
+              "estimated_cost": 13.5,
+              "duration_hours": 2.5,
+              "booking_tip": "Book the 9:30 AM entry to beat mid-day tourist buses.",
+              "transit_info": "Bus 24 directly from Plaça de Catalunya to Park Güell entrance.",
+              "coordinates": {"lat": 41.4145, "lng": 2.1527}
+            },
+            {
+              "id": "act-s1-6",
+              "time_slot": "Afternoon",
+              "time_range": "12:30 PM - 02:30 PM",
+              "title": "Gràcia Neighborhood Exploration & Cafe Lunch",
+              "category": "dining",
+              "description": "Descend the hills into Vila de Gràcia. Dine on artisanal Catalan sandwiches and organic salads at Cafe Federal or Plaça del Sol.",
+              "location": "Plaça del Sol, Gràcia",
+              "estimated_cost": 22.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Sit outdoors on the piazza for relaxed people-watching.",
+              "transit_info": "15 minute gentle downhill walk from Park Güell.",
+              "coordinates": {"lat": 41.4018, "lng": 2.1565}
+            },
+            {
+              "id": "act-s1-7",
+              "time_slot": "Evening",
+              "time_range": "04:30 PM - 07:00 PM",
+              "title": "Barceloneta Beach Promenade & Sunset Drinks",
+              "category": "leisure",
+              "description": "Take the metro down to the coast. Walk along the Mediterranean boardwalk, watch seaside volleyball, and catch the sunset with a chilled sangria.",
+              "location": "Passeig Marítim de la Barceloneta",
+              "estimated_cost": 15.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Great spot for an evening jog or relaxed photography.",
+              "transit_info": "Metro L4 to Barceloneta.",
+              "coordinates": {"lat": 41.3784, "lng": 2.1925}
+            },
+            {
+              "id": "act-s1-8",
+              "time_slot": "Night",
+              "time_range": "08:30 PM - 10:30 PM",
+              "title": "Solo Paella Tasting at 7 Portes or Can Ros",
+              "category": "dining",
+              "description": "Authentic seafood paella cooked over gas flames. Celebrate the final night of your weekend journey.",
+              "location": "Passeig d'Isabel II, 14",
+              "estimated_cost": 42.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Reserve online 24 hours prior or ask for single diner table upon opening.",
+              "transit_info": "Walking distance from port waterfront.",
+              "coordinates": {"lat": 41.3824, "lng": 2.1834}
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scenario_2": {
+    "id": "scenario-2-couple-romantic",
+    "name": "Couple Personalized Romantic Vacation",
+    "description": "A relaxed, scenic, premium vacation focusing on intimate dining, scenic vistas, boutique ambiance, and zero rush.",
+    "preferences": {
+      "destination": "Amalfi Coast & Positano, Italy",
+      "start_date": "2026-11-20",
+      "end_date": "2026-11-23",
+      "duration_days": 3,
+      "traveler_type": "couple",
+      "group_size": 2,
+      "budget_tier": "luxury",
+      "total_budget": 2400.0,
+      "pacing": "relaxed",
+      "interests": ["romantic & scenic", "fine dining", "wine tasting", "relaxation"],
+      "accommodation_preference": "boutique",
+      "dietary_restrictions": ["none"]
+    },
+    "itinerary": {
+      "id": "itinerary-couple-amalfi-02",
+      "title": "Romantic Escape: Clifftop Splendor & Amalfi Serenade",
+      "destination": "Positano & Amalfi Coast, Italy",
+      "trip_summary": "A 3-day romantic journey curated with private cliffside dining, tranquil boat cruises along the pastel shores, scenic walks, and Italian coastal elegance.",
+      "traveler_type": "couple",
+      "duration_days": 3,
+      "dates": "Nov 20, 2026 - Nov 23, 2026",
+      "pacing": "relaxed",
+      "budget_breakdown": {
+        "currency": "USD",
+        "attractions": 320.0,
+        "dining": 680.0,
+        "accommodation": 950.0,
+        "transportation": 210.0,
+        "miscellaneous": 120.0,
+        "total_estimated": 2280.0,
+        "budget_limit": 2400.0,
+        "remaining_balance": 120.0,
+        "is_within_budget": true
+      },
+      "logistics": {
+        "best_transit_mode": "Private chauffeured Mercedes van & scenic ferry",
+        "airport_transfer_tip": "Fly into Naples Capodichino (NAP); pre-book private coastal transfer directly to your Positano boutique hotel.",
+        "local_transport_pass": "Ferry passes between Positano, Amalfi, and Capri provide the most relaxing journey avoiding coastal traffic.",
+        "packing_tips": ["Linen evening wear", "Sturdy flats for cobblestone inclines", "Polarized sunglasses"],
+        "safety_notes": "Very tranquil and secure region. Watch your step on damp cliffside stone stairs."
+      },
+      "days": [
+        {
+          "day_number": 1,
+          "date": "2026-11-20",
+          "theme": "Arrival & Sunset Cocktails over Positano Bay",
+          "summary": "Check into cliffside boutique hotel, stroll through cascaded bougainvillea streets, and dine at a candlelit terrace overlooking the sea.",
+          "day_estimated_cost": 720.0,
+          "activities": [
+            {
+              "id": "act-s2-1",
+              "time_slot": "Afternoon",
+              "time_range": "02:00 PM - 05:00 PM",
+              "title": "Check-in at Cliffside Boutique Villa & Spianata Stroll",
+              "category": "accommodation",
+              "description": "Unpack and sip complimentary welcome prosecco on your private balcony overlooking the Mediterranean sea.",
+              "location": "Via Cristoforo Colombo, Positano",
+              "estimated_cost": 380.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Request high floor cliff-view suite with private terrace.",
+              "transit_info": "Private driver drop-off at pedestrian lane.",
+              "coordinates": {"lat": 40.6281, "lng": 14.485}
+            },
+            {
+              "id": "act-s2-2",
+              "time_slot": "Evening",
+              "time_range": "05:30 PM - 07:30 PM",
+              "title": "Sunset Cocktails at Franco's Bar",
+              "category": "dining",
+              "description": "Iconic al fresco terrace bar with sweeping vistas, bespoke spritzes, and romantic golden hour ambience.",
+              "location": "Via Cristoforo Colombo, 30",
+              "estimated_cost": 75.0,
+              "duration_hours": 2.0,
+              "booking_tip": "No reservations accepted; arrive 30 minutes before sunset for the premier front-rail seats.",
+              "transit_info": "5 minute walk from hotel.",
+              "coordinates": {"lat": 40.6292, "lng": 14.4861}
+            },
+            {
+              "id": "act-s2-3",
+              "time_slot": "Night",
+              "time_range": "08:00 PM - 10:30 PM",
+              "title": "Candlelit Seafood Dinner at Ristorante Max",
+              "category": "dining",
+              "description": "Fine art gallery restaurant set in a historic courtyard. Fresh handmade pasta, catch of the day, and sommelier-paired regional wines.",
+              "location": "Piazza dei Mulini, 22",
+              "estimated_cost": 180.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Ask for the intimate garden courtyard table.",
+              "transit_info": "Gentle downhill stroll through the village.",
+              "coordinates": {"lat": 40.6298, "lng": 14.4853}
+            }
+          ]
+        },
+        {
+          "day_number": 2,
+          "date": "2026-11-21",
+          "theme": "Private Capri Boat Charter & Blue Grotto",
+          "summary": "Full day chartered private boat excursion around Capri's legendary Faraglioni rock formations and secluded swimming coves.",
+          "day_estimated_cost": 850.0,
+          "activities": [
+            {
+              "id": "act-s2-4",
+              "time_slot": "Morning",
+              "time_range": "09:30 AM - 01:00 PM",
+              "title": "Private Gozzo Boat Charter along Capri Shoreline",
+              "category": "attraction",
+              "description": "Board a classic wooden Italian Gozzo boat with private skipper. Cruise past Sirenuse islands, White Grotto, and iconic Faraglioni arches.",
+              "location": "Positano Marina Pier",
+              "estimated_cost": 420.0,
+              "duration_hours": 3.5,
+              "booking_tip": "Towels, prosecco, and snorkeling gear included on board.",
+              "transit_info": "10 min walk to main pier.",
+              "coordinates": {"lat": 40.6273, "lng": 14.4867}
+            },
+            {
+              "id": "act-s2-5",
+              "time_slot": "Afternoon",
+              "time_range": "01:30 PM - 03:30 PM",
+              "title": "Cliffside Lunch at La Fontelina Capri",
+              "category": "dining",
+              "description": "World-famous beach club restaurant nestled directly opposite the Faraglioni rocks. Savor spaghetti alle vongole and chilled sangria.",
+              "location": "Faraglioni, Capri",
+              "estimated_cost": 190.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Boat drops you off directly at the private rock slipway.",
+              "transit_info": "Direct boat transfer.",
+              "coordinates": {"lat": 40.5471, "lng": 14.2514}
+            },
+            {
+              "id": "act-s2-6",
+              "time_slot": "Night",
+              "time_range": "08:00 PM - 10:30 PM",
+              "title": "Intimate Dinner at Rada Rooftop Positano",
+              "category": "dining",
+              "description": "Sensational cliffside rooftop dining hovering directly above the gentle waves of Spiaggia Grande.",
+              "location": "Località Grotte dell'Incanto, Positano",
+              "estimated_cost": 210.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Book table 1 month in advance for unobstructed waterfront views.",
+              "transit_info": "Short walk along beach jetty.",
+              "coordinates": {"lat": 40.6279, "lng": 14.4872}
+            }
+          ]
+        },
+        {
+          "day_number": 3,
+          "date": "2026-11-22",
+          "theme": "Ravello Gardens & Cliffside Vineyard Tour",
+          "summary": "Ascend to high-altitude Ravello, wander through Villa Cimbrone's Terrace of Infinity, and enjoy organic wine tasting overlooking the gulf.",
+          "day_estimated_cost": 710.0,
+          "activities": [
+            {
+              "id": "act-s2-7",
+              "time_slot": "Morning",
+              "time_range": "10:00 AM - 01:00 PM",
+              "title": "Villa Cimbrone & Infinity Terrace",
+              "category": "attraction",
+              "description": "Stroll lush English gardens leading to the 'Terrazza dell'Infinito' marble bust balcony perched 1,200 feet above the sapphire Mediterranean.",
+              "location": "Via Santa Chiara, 26, Ravello",
+              "estimated_cost": 24.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Undoubtedly the most romantic photo opportunity in Southern Europe.",
+              "transit_info": "Scenic 35-min private car ride along the coastline.",
+              "coordinates": {"lat": 40.6478, "lng": 14.6112}
+            },
+            {
+              "id": "act-s2-8",
+              "time_slot": "Afternoon",
+              "time_range": "01:30 PM - 04:00 PM",
+              "title": "Private Marisa Cuomo Winery Tasting & Cellar Lunch",
+              "category": "dining",
+              "description": "Taste extreme clifftop wines harvested from steep vertical rocks. 4-course food and wine pairing overlooking Furore fjord.",
+              "location": "Furore, Amalfi Coast",
+              "estimated_cost": 160.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Reservation required; includes sommelier guide through rock cellars.",
+              "transit_info": "Private transfer between Ravello and Furore.",
+              "coordinates": {"lat": 40.6231, "lng": 14.5512}
+            },
+            {
+              "id": "act-s2-9",
+              "time_slot": "Night",
+              "time_range": "07:30 PM - 10:00 PM",
+              "title": "Farewell Starlight Toast at Hotel Sirenuse Terrace",
+              "category": "dining",
+              "description": "Wrap up your romantic getaway under 400 flickering candles with champagne and gourmet desserts.",
+              "location": "Via Cristoforo Colombo, 30",
+              "estimated_cost": 140.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Smart elegant dress code enforced.",
+              "transit_info": "Walk back to hotel.",
+              "coordinates": {"lat": 40.6288, "lng": 14.4856}
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scenario_3": {
+    "id": "scenario-3-group-multiday",
+    "name": "Small Group Coordinating a Multi-Day Trip",
+    "description": "Multi-day adventure balancing group activities, shared transport logistics, budget split tracking, and scheduled free time.",
+    "preferences": {
+      "destination": "Kyoto & Osaka, Japan",
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-28",
+      "duration_days": 4,
+      "traveler_type": "group",
+      "group_size": 4,
+      "budget_tier": "balanced",
+      "total_budget": 3600.0,
+      "pacing": "balanced",
+      "interests": ["culture", "adventure", "food", "nightlife", "sightseeing"],
+      "accommodation_preference": "hotel",
+      "dietary_restrictions": ["1 vegetarian member"]
+    },
+    "itinerary": {
+      "id": "itinerary-group-japan-03",
+      "title": "Kyoto & Osaka Group Odyssey: Ancient Shrines to Neon Alleys",
+      "destination": "Kyoto & Osaka, Japan",
+      "trip_summary": "A 4-day coordinated group journey structured to maximize shared experiences while providing split logistics, food flexibility for all diets, and seamless bullet train connectivity.",
+      "traveler_type": "group",
+      "duration_days": 4,
+      "dates": "Nov 25, 2026 - Nov 28, 2026",
+      "pacing": "balanced",
+      "budget_breakdown": {
+        "currency": "USD",
+        "attractions": 380.0,
+        "dining": 920.0,
+        "accommodation": 1400.0,
+        "transportation": 420.0,
+        "miscellaneous": 200.0,
+        "total_estimated": 3320.0,
+        "budget_limit": 3600.0,
+        "remaining_balance": 280.0,
+        "is_within_budget": true
+      },
+      "logistics": {
+        "best_transit_mode": "JR Shinkansen bullet train + ICOCA contactless transit cards",
+        "airport_transfer_tip": "Kansai Airport (KIX) -> Take Haruka Express train directly to Kyoto Station (75 mins). Group of 4 can pre-reserve reserved car seats together.",
+        "local_transport_pass": "ICOCA cards loaded with ¥5,000 each for seamless subway and bus boarding without group queue delays.",
+        "packing_tips": ["Easy slip-off shoes for temple visits", "Pocket Wi-Fi device or dual e-SIMs for group messaging", "Cash for food stalls"],
+        "safety_notes": "Extremely safe for groups. Ensure group members save meeting points in Google Maps if splitting up for shopping."
+      },
+      "days": [
+        {
+          "day_number": 1,
+          "date": "2026-11-25",
+          "theme": "Arashiyama Bamboo Grove & Monkey Mountain",
+          "summary": "Explore western Kyoto's scenic bamboo corridors, cross the Togetsukyo bridge, and encounter wild macaque monkeys with scenic river views.",
+          "day_estimated_cost": 780.0,
+          "activities": [
+            {
+              "id": "act-s3-1",
+              "time_slot": "Morning",
+              "time_range": "08:30 AM - 11:30 AM",
+              "title": "Arashiyama Bamboo Forest & Tenryu-ji Temple",
+              "category": "attraction",
+              "description": "Walk together through towering bamboo stalks in crisp morning air, then visit the UNESCO zen landscape gardens of Tenryu-ji.",
+              "location": "Sagatenryuji, Ukyo Ward, Kyoto",
+              "estimated_cost": 32.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Start at 8:30 AM to take group photos before crowds arrive.",
+              "transit_info": "JR San-in Line from Kyoto Station to Saga-Arashiyama (17 mins).",
+              "coordinates": {"lat": 35.0169, "lng": 135.6713}
+            },
+            {
+              "id": "act-s3-2",
+              "time_slot": "Afternoon",
+              "time_range": "12:00 PM - 02:00 PM",
+              "title": "Group Yuba & Soba Feast at Arashiyama Yoshimura",
+              "category": "dining",
+              "description": "Handmade buckwheat soba with tempura and tofu skin specialties. Accommodates vegetarian preference with dedicated vegetarian sets.",
+              "location": "3 Sagatenryuji Tsukurimichicho",
+              "estimated_cost": 88.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Large group tatami room with Oi River panorama.",
+              "transit_info": "5 min walk from Bamboo grove.",
+              "coordinates": {"lat": 35.0135, "lng": 135.6775}
+            },
+            {
+              "id": "act-s3-3",
+              "time_slot": "Evening",
+              "time_range": "03:00 PM - 05:30 PM",
+              "title": "Kinkaku-ji (The Golden Pavilion)",
+              "category": "attraction",
+              "description": "Group visit to the shimmering gold-leaf Zen temple mirrored across the surrounding Kyoko-chi pond.",
+              "location": "1 Kinkakujicho, Kita Ward, Kyoto",
+              "estimated_cost": 20.0,
+              "duration_hours": 2.0,
+              "booking_tip": "Taxis for a group of 4 from Arashiyama to Kinkaku-ji cost almost the same as 4 bus fares and save 40 mins.",
+              "transit_info": "Short group taxi ride.",
+              "coordinates": {"lat": 35.0394, "lng": 135.7292}
+            },
+            {
+              "id": "act-s3-4",
+              "time_slot": "Night",
+              "time_range": "07:00 PM - 09:30 PM",
+              "title": "Gion Historic Lantern Walk & Izakaya Dinner",
+              "category": "dining",
+              "description": "Walk through Pontocho Alley lit by paper lanterns. Enjoy shared skewered yakitori, edamame, and craft Japanese beers.",
+              "location": "Pontocho Alley, Nakagyo Ward",
+              "estimated_cost": 140.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Split bill evenly across group members via contactless payments.",
+              "transit_info": "Subway Tozai line to Sanjo Keihan.",
+              "coordinates": {"lat": 35.0064, "lng": 135.7712}
+            }
+          ]
+        },
+        {
+          "day_number": 2,
+          "date": "2026-11-26",
+          "theme": "Thousands of Torii Gates & Nishiki Food Market",
+          "summary": "Climb through the vermilion gates of Fushimi Inari, taste dozens of local street foods at Nishiki Market, and visit Kiyomizu-dera.",
+          "day_estimated_cost": 820.0,
+          "activities": [
+            {
+              "id": "act-s3-5",
+              "time_slot": "Morning",
+              "time_range": "08:00 AM - 11:30 AM",
+              "title": "Fushimi Inari-taisha Torii Path Hike",
+              "category": "adventure",
+              "description": "Hike the 4-kilometer trail winding through thousands of crimson torii gates up sacred Mount Inari.",
+              "location": "68 Fukakusa Yabunouchicho, Fushimi Ward",
+              "estimated_cost": 0.0,
+              "duration_hours": 3.5,
+              "booking_tip": "Free entry. Stop halfway at Yotsutsuji intersection for Kyoto city views.",
+              "transit_info": "JR Nara line from Kyoto Station (5 mins).",
+              "coordinates": {"lat": 34.9671, "lng": 135.7727}
+            },
+            {
+              "id": "act-s3-6",
+              "time_slot": "Afternoon",
+              "time_range": "12:30 PM - 03:00 PM",
+              "title": "Nishiki Market Culinary Grazing Tour",
+              "category": "dining",
+              "description": "Known as 'Kyoto's Kitchen'. Sample grilled wagyu skewers, matcha ice cream, dashi tamagoyaki, and pickled vegetables.",
+              "location": "Nakagyo Ward, Kyoto",
+              "estimated_cost": 75.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Group members can sample freely at independent stalls.",
+              "transit_info": "Subway Karasuma Line to Shijo.",
+              "coordinates": {"lat": 35.005, "lng": 135.7649}
+            },
+            {
+              "id": "act-s3-7",
+              "time_slot": "Evening",
+              "time_range": "04:00 PM - 06:30 PM",
+              "title": "Kiyomizu-dera Wooden Stage & Sunset Panorama",
+              "category": "attraction",
+              "description": "Historic wooden temple built without a single nail hanging out over cherry blossom and maple trees.",
+              "location": "1 Chome-294 Kiyomizu, Higashiyama Ward",
+              "estimated_cost": 16.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Drink from Otowa Waterfall's three streams for health, longevity, or success in studies.",
+              "transit_info": "Uphill walk through Ninenzaka & Sannenzaka preserved streets.",
+              "coordinates": {"lat": 34.9949, "lng": 135.785}
+            },
+            {
+              "id": "act-s3-8",
+              "time_slot": "Night",
+              "time_range": "07:30 PM - 10:00 PM",
+              "title": "Traditional Kaiseki or Shabu-Shabu Dinner",
+              "category": "dining",
+              "description": "Multi-course seasonal Japanese dining with paper hot-pots, vegetables, and tofu hot stone cooking.",
+              "location": "Higashiyama, Kyoto",
+              "estimated_cost": 160.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Pre-advised vegetarian broth option confirmed for group member.",
+              "transit_info": "Walking distance in Higashiyama.",
+              "coordinates": {"lat": 35.0012, "lng": 135.7789}
+            }
+          ]
+        },
+        {
+          "day_number": 3,
+          "date": "2026-11-27",
+          "theme": "Osaka Castle & Dotonbori Street Food Extravaganza",
+          "summary": "Bullet train transfer into Osaka. Explore historic Osaka Castle gardens and immerse in Dotonbori's neon nightlife and street food.",
+          "day_estimated_cost": 890.0,
+          "activities": [
+            {
+              "id": "act-s3-9",
+              "time_slot": "Morning",
+              "time_range": "09:30 AM - 12:30 PM",
+              "title": "Shinkansen Transit & Osaka Castle Park",
+              "category": "attraction",
+              "description": "Fast 15-minute Shinkansen to Shin-Osaka. Drop bags and explore the grand moat, stone walls, and museum tower of Osaka Castle.",
+              "location": "1-1 Osakajo, Chuo Ward, Osaka",
+              "estimated_cost": 36.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Store luggage at Shin-Osaka lockers or check in early.",
+              "transit_info": "Tokaido Shinkansen bullet train.",
+              "coordinates": {"lat": 34.6873, "lng": 135.5262}
+            },
+            {
+              "id": "act-s3-10",
+              "time_slot": "Afternoon",
+              "time_range": "01:00 PM - 04:00 PM",
+              "title": "Shinsekai Retro District & Kushikatsu Lunch",
+              "category": "dining",
+              "description": "Nostalgic 1912 Osaka neighborhood beneath Tsutenkaku Tower. Savor deep-fried crispy skewers (veggies, cheese, seafood, meats).",
+              "location": "Shinsekai, Naniwa Ward, Osaka",
+              "estimated_cost": 65.0,
+              "duration_hours": 3.0,
+              "booking_tip": "Remember the golden Osaka rule: never double-dip in the communal sauce tray!",
+              "transit_info": "Osaka Loop Line to Shin-Imamiya station.",
+              "coordinates": {"lat": 34.6525, "lng": 135.5063}
+            },
+            {
+              "id": "act-s3-11",
+              "time_slot": "Evening",
+              "time_range": "05:00 PM - 07:30 PM",
+              "title": "Umeda Sky Building Floating Garden Observatory",
+              "category": "attraction",
+              "description": "Futuristic twin towers connected by an open-air 360-degree observation deck 173 meters above the city.",
+              "location": "1-1-88 Oyodonaka, Kita Ward, Osaka",
+              "estimated_cost": 48.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Time your arrival 45 minutes prior to sunset to catch dusk transitioning to neon city lights.",
+              "transit_info": "Midosuji line to Umeda.",
+              "coordinates": {"lat": 34.7052, "lng": 135.49}
+            },
+            {
+              "id": "act-s3-12",
+              "time_slot": "Night",
+              "time_range": "08:00 PM - 11:30 PM",
+              "title": "Dotonbori Neon Canal Walk & Okonomiyaki Feast",
+              "category": "nightlife",
+              "description": "Pose under the legendary Glico Running Man billboard, sample piping-hot takoyaki octo-balls, and enjoy savory cabbage pancakes.",
+              "location": "Dotonbori, Chuo Ward, Osaka",
+              "estimated_cost": 95.0,
+              "duration_hours": 3.5,
+              "booking_tip": "Book a group booth at Mizuno or Chibo okonomiyaki.",
+              "transit_info": "Subway Midosuji line to Namba station.",
+              "coordinates": {"lat": 34.6687, "lng": 135.5013}
+            }
+          ]
+        },
+        {
+          "day_number": 4,
+          "date": "2026-11-28",
+          "theme": "Universal Studios Japan or Cultural Shopping & Departure",
+          "summary": "Flexible final day: Group visits Super Nintendo World / Wizarding World of Harry Potter or explores Nipponbashi Den-Den Town before flight.",
+          "day_estimated_cost": 830.0,
+          "activities": [
+            {
+              "id": "act-s3-13",
+              "time_slot": "Morning",
+              "time_range": "09:00 AM - 01:00 PM",
+              "title": "Super Nintendo World at Universal Studios Japan",
+              "category": "adventure",
+              "description": "Interactive real-world Mario Kart experience, punching Coin Blocks with power-up bands, and exploring Bowser's Castle.",
+              "location": "2 Chome-1-33 Sakurajima, Konohana Ward",
+              "estimated_cost": 260.0,
+              "duration_hours": 4.0,
+              "booking_tip": "Express passes recommended for groups to enter timed-area Nintendo World together.",
+              "transit_info": "JR Yumesaki Line to Universal City Station.",
+              "coordinates": {"lat": 34.6654, "lng": 135.4323}
+            },
+            {
+              "id": "act-s3-14",
+              "time_slot": "Afternoon",
+              "time_range": "01:30 PM - 04:00 PM",
+              "title": "Shinsaibashi-suji Souvenir Shopping & Group Farewell Lunch",
+              "category": "dining",
+              "description": "Covered 600m shopping arcade. Pick up Japanese snacks, green tea treats, and enjoy a farewell ramen / udon lunch.",
+              "location": "Shinsaibashisuji, Chuo Ward, Osaka",
+              "estimated_cost": 60.0,
+              "duration_hours": 2.5,
+              "booking_tip": "Tax-free shopping available with your passports.",
+              "transit_info": "Direct subway return to Namba.",
+              "coordinates": {"lat": 34.6715, "lng": 135.5005}
+            },
+            {
+              "id": "act-s3-15",
+              "time_slot": "Evening",
+              "time_range": "05:00 PM - 07:00 PM",
+              "title": "Nankai Rapi:t Express to Kansai Airport (KIX)",
+              "category": "logistics",
+              "description": "Board the futuristic blue retro Nankai Rapi:t express train directly to KIX airport for your departure flight.",
+              "location": "Namba Nankai Station",
+              "estimated_cost": 44.0,
+              "duration_hours": 1.5,
+              "booking_tip": "Comfortable reserved seats with dedicated luggage bays for the entire group.",
+              "transit_info": "Direct express rail to terminal.",
+              "coordinates": {"lat": 34.432, "lng": 135.2304}
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

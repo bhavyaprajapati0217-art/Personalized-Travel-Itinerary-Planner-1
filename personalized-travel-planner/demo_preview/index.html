@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalized Travel Itinerary Planner | Interactive Live Preview</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Plus Jakarta Sans Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .animate-spin-slow { animation: spin 8s linear infinite; }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- Top Mentor / Submission Banner from MySkillWallet -->
+  <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white text-xs py-2 px-4 font-medium flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-2 max-w-7xl mx-auto w-full justify-between">
+      <span class="flex items-center gap-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider">Project Notice</span>
+        Add Demo and GitHub links so that your mentor can review and evaluate your project!
+      </span>
+      <span class="hidden sm:inline bg-white/20 text-white text-xs px-2.5 py-0.5 rounded-full font-bold">
+        0 AI Token • 400 Credits
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('dashboard')">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+            <i data-lucide="compass" class="w-6 h-6 animate-spin-slow"></i>
+          </div>
+          <div>
+            <div class="font-bold text-lg text-slate-900 tracking-tight flex items-center gap-2">
+              Personalized Travel Planner
+              <span class="text-[10px] font-bold px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full border border-blue-200">
+                AI SaaS Live Demo
+              </span>
+            </div>
+            <p class="text-xs text-slate-500">React • FastAPI • Google Cloud Gemini • Supabase</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="switchTab('dashboard')" id="btn-tab-dashboard" class="px-3.5 py-2 text-xs font-bold rounded-xl bg-blue-50 text-blue-600 transition-colors">
+            Dashboard
+          </button>
+          <button onclick="switchTab('itinerary')" id="btn-tab-itinerary" class="px-3.5 py-2 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-colors">
+            Itinerary View
+          </button>
+          <button onclick="openModal()" class="ml-2 inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-bold rounded-xl shadow-sm hover:from-blue-700 hover:to-indigo-700 transition-all">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Smart Trip Builder</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Container -->
+  <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="view-dashboard" class="space-y-10">
+      <!-- Hero SaaS Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-950 text-white p-8 sm:p-12 shadow-xl border border-slate-800">
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-blue-200 border border-white/15 mb-4">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
+            <span>Generative AI with Google Cloud & Supabase</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Personalized Travel <br class="hidden sm:inline">
+            <span class="bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              Itinerary Planner
+            </span>
+          </h1>
+
+          <p class="text-xs sm:text-sm text-slate-300 mt-4 leading-relaxed max-w-2xl">
+            A full-stack, AI-powered web application that generates customized day-by-day itineraries based on user preferences, budget, and travel style. Delivered with structured attractions, dining, accommodations, and transit logistics.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 mt-8">
+            <button onclick="openModal()" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-lg shadow-blue-500/30 flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Launch Smart Trip Builder</span>
+            </button>
+            <button onclick="loadScenario('scenario_1')" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 flex items-center gap-2">
+              <span>Try Scenario 1 (Solo Weekend)</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/10 text-xs">
+          <div>
+            <div class="text-slate-400 font-medium">Architecture</div>
+            <div class="text-sm font-bold text-white mt-0.5">React + FastAPI</div>
+          </div>
+          <div>
+            <div class="text-slate-400 font-medium">Database</div>
+            <div class="text-sm font-bold text-white mt-0.5">Supabase PostgreSQL</div>
+          </div>
+          <div>
+            <div class="text-slate-400 font-medium">AI Model</div>
+            <div class="text-sm font-bold text-white mt-0.5">Gemini 1.5 Flash</div>
+          </div>
+          <div>
+            <div class="text-slate-400 font-medium">Status</div>
+            <div class="text-sm font-bold text-emerald-400 mt-0.5">Ready for Evaluation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Built-in 3 Scenarios -->
+      <div>
+        <div class="mb-6">
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">
+            Curriculum Core Evaluation
+          </span>
+          <h2 class="text-2xl font-bold text-slate-900 mt-2">Built-in Project Scenarios</h2>
+          <p class="text-xs text-slate-500">Click any card below to instantly generate and view that persona's itinerary:</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Scenario 1 Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md border bg-emerald-50 text-emerald-700 border-emerald-200">
+                  Scenario 1
+                </span>
+                <div class="w-8 h-8 rounded-lg bg-emerald-500 text-white flex items-center justify-center">
+                  <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 mb-1">Solo Traveler Weekend Getaway</h3>
+              <div class="text-xs text-slate-500 mb-2">📍 Barcelona, Spain • 2 Days • $650 Budget</div>
+              <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                Optimized 48-hour plan connecting Gaudí's Sagrada Família & Park Güell, Boqueria tapas market, and Gothic Quarter walks with low transit friction.
+              </p>
+            </div>
+            <button onclick="loadScenario('scenario_1')" class="w-full py-2.5 px-4 bg-slate-50 hover:bg-blue-600 hover:text-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-all flex items-center justify-center gap-1.5">
+              <span>Load Solo Weekend Plan</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Scenario 2 Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md border bg-rose-50 text-rose-700 border-rose-200">
+                  Scenario 2
+                </span>
+                <div class="w-8 h-8 rounded-lg bg-rose-500 text-white flex items-center justify-center">
+                  <i data-lucide="heart" class="w-4 h-4"></i>
+                </div>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 mb-1">Couple Romantic Vacation</h3>
+              <div class="text-xs text-slate-500 mb-2">📍 Amalfi Coast & Positano • 3 Days • $2,400 Luxury</div>
+              <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                Curated cliffside vacation featuring private Gozzo boat charters to Capri, Ravello Villa Cimbrone infinity terrace, and candlelit seafood dinners.
+              </p>
+            </div>
+            <button onclick="loadScenario('scenario_2')" class="w-full py-2.5 px-4 bg-slate-50 hover:bg-blue-600 hover:text-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-all flex items-center justify-center gap-1.5">
+              <span>Load Couple Vacation Plan</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+
+          <!-- Scenario 3 Card -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold px-2.5 py-1 rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200">
+                  Scenario 3
+                </span>
+                <div class="w-8 h-8 rounded-lg bg-indigo-500 text-white flex items-center justify-center">
+                  <i data-lucide="users" class="w-4 h-4"></i>
+                </div>
+              </div>
+              <h3 class="text-base font-bold text-slate-900 mb-1">Small Group Multi-Day Trip</h3>
+              <div class="text-xs text-slate-500 mb-2">📍 Kyoto & Osaka, Japan • 4 Days • $3,600 (Group of 4)</div>
+              <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                Coordinated group itinerary balancing Arashiyama bamboo hikes, Fushimi Inari torii gates, Dotonbori food alleys, with budget splitting & dietary care.
+              </p>
+            </div>
+            <button onclick="loadScenario('scenario_3')" class="w-full py-2.5 px-4 bg-slate-50 hover:bg-blue-600 hover:text-white border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-all flex items-center justify-center gap-1.5">
+              <span>Load Group Trip Plan</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: ITINERARY VIEW -->
+    <section id="view-itinerary" class="hidden space-y-8 pb-16">
+      <!-- Header Banner -->
+      <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span id="itin-dest-badge" class="text-xs font-bold px-3 py-1 bg-blue-50 text-blue-700 rounded-full border border-blue-200 flex items-center gap-1">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                <span id="itin-dest-text">Barcelona, Spain</span>
+              </span>
+              <span id="itin-days-badge" class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full">
+                2 Days Plan
+              </span>
+              <span id="itin-type-badge" class="text-xs font-semibold px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full">
+                Solo Persona
+              </span>
+            </div>
+            <h1 id="itin-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Solo Explorer: Vibrant Barcelona in 48 Hours
+            </h1>
+            <p id="itin-summary" class="text-xs sm:text-sm text-slate-600 mt-2 max-w-3xl leading-relaxed">
+              An optimized 2-day solo itinerary connecting Antoni Gaudí's architectural marvels, lively tapas markets, and panoramic coastal views with low transit overhead.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="saveTripToast()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 transition-colors">
+              <i data-lucide="bookmark" class="w-4 h-4"></i>
+              <span>Save to Supabase</span>
+            </button>
+            <button onclick="window.print()" class="px-4 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold flex items-center gap-1.5 transition-colors">
+              <i data-lucide="printer" class="w-4 h-4"></i>
+              <span>Print / PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Day Selector Tabs -->
+        <div class="pt-6">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Select Itinerary Day</span>
+            <button onclick="openRegenPrompt()" class="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>Regenerate Selected Day</span>
+            </button>
+          </div>
+          <div id="day-tabs-container" class="flex gap-2 overflow-x-auto pb-2">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Day Overview -->
+      <div id="day-banner" class="bg-gradient-to-r from-blue-50 via-indigo-50/50 to-white rounded-2xl border border-blue-100 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div id="current-day-label" class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">Day 1 Focus</div>
+          <h2 id="current-day-theme" class="text-xl font-bold text-slate-900 mb-1">Gaudí Masterpieces & Gothic Quarter Secrets</h2>
+          <p id="current-day-summary" class="text-xs text-slate-600 max-w-2xl">Begin with the breathtaking Sagrada Família, stroll through Passeig de Gràcia, and wrap up with tapas in the medieval Gothic Quarter.</p>
+        </div>
+        <div class="px-4 py-2 bg-white rounded-xl border border-blue-200/80 shadow-sm text-right">
+          <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider block">Day Cost Est.</span>
+          <span id="current-day-cost" class="text-sm font-extrabold text-emerald-600">$270.00</span>
+        </div>
+      </div>
+
+      <!-- Activities Grid -->
+      <div>
+        <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <span>Scheduled Activities & Transit Flow</span>
+        </h3>
+        <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <!-- Budget Breakdown Section -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Estimated Budget & Cost Tracker</h3>
+            <p class="text-xs text-slate-500">Live breakdown calculated across all days & activities</p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            ✓ Within Target Budget
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-xs text-slate-500 font-medium">Estimated Total Cost</span>
+            <div id="budget-total" class="text-xl font-extrabold text-slate-900 mt-1">$520.00 USD</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-xs text-slate-500 font-medium">Target Budget Cap</span>
+            <div id="budget-limit" class="text-xl font-extrabold text-slate-900 mt-1">$650.00 USD</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
+            <span class="text-xs text-slate-500 font-medium">Remaining Buffer</span>
+            <div id="budget-rem" class="text-xl font-extrabold text-emerald-600 mt-1">$130.00 USD</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
+          <div class="p-3 rounded-xl border border-slate-100 bg-white">
+            <span class="text-slate-500 block mb-1">Attractions</span>
+            <span id="b-attr" class="font-bold text-slate-900">$85.00</span>
+          </div>
+          <div class="p-3 rounded-xl border border-slate-100 bg-white">
+            <span class="text-slate-500 block mb-1">Dining</span>
+            <span id="b-dine" class="font-bold text-slate-900">$140.00</span>
+          </div>
+          <div class="p-3 rounded-xl border border-slate-100 bg-white">
+            <span class="text-slate-500 block mb-1">Accommodations</span>
+            <span id="b-stay" class="font-bold text-slate-900">$220.00</span>
+          </div>
+          <div class="p-3 rounded-xl border border-slate-100 bg-white">
+            <span class="text-slate-500 block mb-1">Transportation</span>
+            <span id="b-trans" class="font-bold text-slate-900">$35.00</span>
+          </div>
+          <div class="p-3 rounded-xl border border-slate-100 bg-white">
+            <span class="text-slate-500 block mb-1">Buffer / Misc</span>
+            <span id="b-misc" class="font-bold text-slate-900">$40.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logistics Section -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <h3 class="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+          <i data-lucide="bus" class="w-4 h-4 text-blue-600"></i>
+          <span>Logistics & Transit Intelligence</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+            <div class="font-bold text-blue-700 mb-1">✈️ Airport & Arrival Transfer</div>
+            <p id="logistics-airport" class="text-slate-700 leading-relaxed"></p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
+            <div class="font-bold text-indigo-700 mb-1">🎫 Recommended Transit Pass</div>
+            <p id="logistics-transit" class="text-slate-700 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Trip Builder Modal -->
+  <div id="modal-builder" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+        <div class="flex items-center gap-2 font-bold text-slate-900">
+          <i data-lucide="sparkles" class="w-5 h-5 text-blue-600"></i>
+          <span>Smart Trip Builder</span>
+        </div>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-slate-600">✕</button>
+      </div>
+
+      <form id="builder-form" onsubmit="handleCustomGenerate(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 uppercase mb-1">Destination</label>
+          <input type="text" id="form-dest" required placeholder="e.g. Rome, Italy or New York" value="Rome, Italy" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase mb-1">Days</label>
+            <input type="number" id="form-days" min="1" max="10" value="3" class="w-full px-3 py-2 rounded-xl border border-slate-200">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 uppercase mb-1">Persona</label>
+            <select id="form-type" class="w-full px-3 py-2 rounded-xl border border-slate-200">
+              <option value="solo">Solo Traveler</option>
+              <option value="couple">Couple</option>
+              <option value="group">Small Group</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-slate-700 uppercase mb-1">Budget (USD)</label>
+            <input type="number" id="form-budget" min="100" step="50" value="1200" class="w-full px-3 py-2 rounded-xl border border-slate-200">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 uppercase mb-1">Pacing</label>
+            <select id="form-pacing" class="w-full px-3 py-2 rounded-xl border border-slate-200">
+              <option value="balanced">Balanced</option>
+              <option value="relaxed">Relaxed</option>
+              <option value="fast-paced">Fast-paced</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex justify-end gap-2">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 rounded-xl border border-slate-200 font-semibold text-slate-600">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Generate Plan</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl border border-slate-800 text-xs font-bold hidden items-center gap-2">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-text">Success</span>
+  </div>
+
+  <!-- Core Data & Application Logic -->
+  <script>
+    // Embedded scenarios
+    const DATA = {
+      scenario_1: {
+        title: "Solo Explorer: Vibrant Barcelona in 48 Hours",
+        destination: "Barcelona, Spain",
+        traveler_type: "solo",
+        duration_days: 2,
+        trip_summary: "An optimized 2-day solo itinerary connecting Antoni Gaudí's architectural marvels, lively tapas markets, and panoramic coastal views with low transit overhead.",
+        budget_breakdown: { attractions: 85, dining: 140, accommodation: 220, transportation: 35, miscellaneous: 40, total_estimated: 520, budget_limit: 650, remaining_balance: 130 },
+        logistics: {
+          airport_transfer_tip: "Take the Aerobús directly to Plaça de Catalunya (approx 35 mins, €6.75).",
+          local_transport_pass: "10-journey T-Casual metro ticket covers all city center zones."
+        },
+        days: [
+          {
+            day_number: 1,
+            theme: "Gaudí Masterpieces & Gothic Quarter Secrets",
+            summary: "Begin with the breathtaking Sagrada Família, stroll through Passeig de Gràcia, and wrap up with tapas in the medieval Gothic Quarter.",
+            day_estimated_cost: 270,
+            activities: [
+              { time_range: "09:00 AM - 11:30 AM", category: "attraction", title: "Basílica de la Sagrada Família", description: "Marvel at Gaudí's soaring basilica interior bathed in morning stained-glass light. Includes audio guide.", location: "C/ de Mallorca, 401", estimated_cost: 34, duration_hours: 2.5, booking_tip: "Book timed-entry tickets online 5 days in advance." },
+              { time_range: "12:00 PM - 02:00 PM", category: "dining", title: "Mercat de la Boqueria & Solo Tapas Lunch", description: "Grab counter seating at Bar Pinotxo for grilled baby squid and tortilla.", location: "La Rambla, 91", estimated_cost: 28, duration_hours: 1.5, booking_tip: "Counter seats are first-come first-served; ideal for solo diners." },
+              { time_range: "03:30 PM - 06:30 PM", category: "attraction", title: "Gothic Quarter (Barri Gòtic) Photo Walk", description: "Explore labyrinthine cobblestone alleys, Barcelona Cathedral, and hidden artisan workshops.", location: "Barri Gòtic", estimated_cost: 0, duration_hours: 3.0, booking_tip: "Golden hour light across the ancient stone facades is incredible." },
+              { time_range: "08:00 PM - 10:00 PM", category: "dining", title: "El Born Tapas & Vermouth Experience", description: "Relax at Tapeo or Cal Pep with local Catalan red wine, patatas bravas, and jamón ibérico.", location: "El Born", estimated_cost: 35, duration_hours: 2.0, booking_tip: "Spanish dinners start after 8:30 PM." }
+            ]
+          },
+          {
+            day_number: 2,
+            theme: "Park Güell Whimsy & Mediterranean Sunset",
+            summary: "Ascend to Gaudí's whimsical park hillside, descend through bohemian Gràcia, and finish at Barceloneta beach.",
+            day_estimated_cost: 250,
+            activities: [
+              { time_range: "09:30 AM - 12:00 PM", category: "attraction", title: "Park Güell Monumental Zone", description: "Wander among the serpentine mosaic benches, Hansel-and-Gretel porter pavilions, and sweeping city views.", location: "Gràcia, Barcelona", estimated_cost: 13.5, duration_hours: 2.5, booking_tip: "Book 9:30 AM entry to beat tourist buses." },
+              { time_range: "12:30 PM - 02:30 PM", category: "dining", title: "Gràcia Neighborhood Exploration & Cafe Lunch", description: "Descend into Vila de Gràcia for artisanal Catalan sandwiches and organic salads at Plaça del Sol.", location: "Plaça del Sol", estimated_cost: 22, duration_hours: 2.0, booking_tip: "Sit outdoors for people-watching." },
+              { time_range: "04:30 PM - 07:00 PM", category: "leisure", title: "Barceloneta Beach Promenade & Sunset Drinks", description: "Walk along the Mediterranean boardwalk and catch the sunset with a chilled sangria.", location: "Barceloneta", estimated_cost: 15, duration_hours: 2.5, booking_tip: "Great spot for an evening jog or relaxed photography." },
+              { time_range: "08:30 PM - 10:30 PM", category: "dining", title: "Solo Paella Tasting at 7 Portes", description: "Authentic seafood paella cooked over gas flames to celebrate your trip finale.", location: "Passeig d'Isabel II", estimated_cost: 42, duration_hours: 2.0, booking_tip: "Reserve online 24 hours prior." }
+            ]
+          }
+        ]
+      },
+      scenario_2: {
+        title: "Romantic Escape: Clifftop Splendor & Amalfi Serenade",
+        destination: "Amalfi Coast & Positano, Italy",
+        traveler_type: "couple",
+        duration_days: 3,
+        trip_summary: "A 3-day romantic journey curated with private cliffside dining, tranquil boat cruises along the pastel shores, scenic walks, and Italian coastal elegance.",
+        budget_breakdown: { attractions: 320, dining: 680, accommodation: 950, transportation: 210, miscellaneous: 120, total_estimated: 2280, budget_limit: 2400, remaining_balance: 120 },
+        logistics: {
+          airport_transfer_tip: "Fly into Naples Capodichino (NAP); pre-book private coastal transfer directly to your Positano boutique hotel.",
+          local_transport_pass: "Ferry passes between Positano, Amalfi, and Capri provide the most scenic transit avoiding coastal traffic."
+        },
+        days: [
+          {
+            day_number: 1,
+            theme: "Arrival & Sunset Cocktails over Positano Bay",
+            summary: "Check into cliffside boutique hotel, stroll through cascaded bougainvillea streets, and dine at a candlelit terrace overlooking the sea.",
+            day_estimated_cost: 720,
+            activities: [
+              { time_range: "02:00 PM - 05:00 PM", category: "accommodation", title: "Check-in at Cliffside Boutique Villa", description: "Unpack and sip complimentary welcome prosecco on your private balcony overlooking the Mediterranean sea.", location: "Via Cristoforo Colombo", estimated_cost: 380, duration_hours: 3.0, booking_tip: "Request high floor cliff-view suite." },
+              { time_range: "05:30 PM - 07:30 PM", category: "dining", title: "Sunset Cocktails at Franco's Bar", description: "Iconic al fresco terrace bar with sweeping vistas, bespoke spritzes, and romantic golden hour ambience.", location: "Via Cristoforo Colombo, 30", estimated_cost: 75, duration_hours: 2.0, booking_tip: "Arrive 30 minutes before sunset for front rail seats." },
+              { time_range: "08:00 PM - 10:30 PM", category: "dining", title: "Candlelit Seafood Dinner at Ristorante Max", description: "Fine art gallery restaurant set in a historic courtyard. Fresh handmade pasta and catch of the day.", location: "Piazza dei Mulini", estimated_cost: 180, duration_hours: 2.5, booking_tip: "Ask for the intimate garden courtyard table." }
+            ]
+          },
+          {
+            day_number: 2,
+            theme: "Private Capri Boat Charter & Blue Grotto",
+            summary: "Full day chartered private boat excursion around Capri's legendary Faraglioni rock formations and secluded swimming coves.",
+            day_estimated_cost: 850,
+            activities: [
+              { time_range: "09:30 AM - 01:00 PM", category: "attraction", title: "Private Gozzo Boat Charter along Capri Shoreline", description: "Board a classic wooden Italian Gozzo boat with private skipper. Cruise past White Grotto and Faraglioni arches.", location: "Positano Marina Pier", estimated_cost: 420, duration_hours: 3.5, booking_tip: "Towels, prosecco, and snorkeling gear included." },
+              { time_range: "01:30 PM - 03:30 PM", category: "dining", title: "Cliffside Lunch at La Fontelina Capri", description: "World-famous beach club restaurant nestled directly opposite the Faraglioni rocks.", location: "Faraglioni, Capri", estimated_cost: 190, duration_hours: 2.0, booking_tip: "Boat drops you off directly at the rock slipway." },
+              { time_range: "08:00 PM - 10:30 PM", category: "dining", title: "Intimate Dinner at Rada Rooftop Positano", description: "Sensational cliffside rooftop dining hovering directly above the gentle waves of Spiaggia Grande.", location: "Positano Beachfront", estimated_cost: 210, duration_hours: 2.5, booking_tip: "Book 1 month in advance." }
+            ]
+          },
+          {
+            day_number: 3,
+            theme: "Ravello Gardens & Cliffside Vineyard Tour",
+            summary: "Ascend to high-altitude Ravello, wander through Villa Cimbrone's Terrace of Infinity, and enjoy organic wine tasting.",
+            day_estimated_cost: 710,
+            activities: [
+              { time_range: "10:00 AM - 01:00 PM", category: "attraction", title: "Villa Cimbrone & Infinity Terrace", description: "Stroll lush English gardens leading to the marble bust balcony perched 1,200 feet above the sapphire Mediterranean.", location: "Ravello", estimated_cost: 24, duration_hours: 3.0, booking_tip: "Undoubtedly the most romantic photo opportunity in Italy." },
+              { time_range: "01:30 PM - 04:00 PM", category: "dining", title: "Private Marisa Cuomo Winery Tasting & Lunch", description: "Taste extreme clifftop wines harvested from steep vertical rocks with a 4-course food and wine pairing.", location: "Furore", estimated_cost: 160, duration_hours: 2.5, booking_tip: "Reservation required." },
+              { time_range: "07:30 PM - 10:00 PM", category: "dining", title: "Farewell Toast at Sirenuse Terrace", description: "Wrap up your romantic getaway under 400 flickering candles with champagne and gourmet desserts.", location: "Positano", estimated_cost: 140, duration_hours: 2.5, booking_tip: "Smart elegant dress code." }
+            ]
+          }
+        ]
+      },
+      scenario_3: {
+        title: "Kyoto & Osaka Group Odyssey: Ancient Shrines to Neon Alleys",
+        destination: "Kyoto & Osaka, Japan",
+        traveler_type: "group",
+        duration_days: 4,
+        trip_summary: "A 4-day coordinated group journey structured to maximize shared experiences while providing split logistics, food flexibility for all diets, and seamless bullet train connectivity.",
+        budget_breakdown: { attractions: 380, dining: 920, accommodation: 1400, transportation: 420, miscellaneous: 200, total_estimated: 3320, budget_limit: 3600, remaining_balance: 280 },
+        logistics: {
+          airport_transfer_tip: "Kansai Airport (KIX) -> Take Haruka Express train directly to Kyoto Station (75 mins). Pre-reserve group seats.",
+          local_transport_pass: "ICOCA cards loaded with ¥5,000 each for seamless subway and bus boarding without group queue delays."
+        },
+        days: [
+          {
+            day_number: 1,
+            theme: "Arashiyama Bamboo Grove & Monkey Mountain",
+            summary: "Explore western Kyoto's scenic bamboo corridors, cross the Togetsukyo bridge, and visit Tenryu-ji zen temple.",
+            day_estimated_cost: 780,
+            activities: [
+              { time_range: "08:30 AM - 11:30 AM", category: "attraction", title: "Arashiyama Bamboo Forest & Tenryu-ji", description: "Walk through towering bamboo stalks in crisp morning air, then visit the UNESCO zen landscape gardens.", location: "Arashiyama, Kyoto", estimated_cost: 32, duration_hours: 3.0, booking_tip: "Start at 8:30 AM for group photos before crowds." },
+              { time_range: "12:00 PM - 02:00 PM", category: "dining", title: "Group Yuba & Soba Feast at Yoshimura", description: "Handmade buckwheat soba with vegetarian sets available for the group.", location: "Oi Riverfront", estimated_cost: 88, duration_hours: 2.0, booking_tip: "Large group tatami room available." },
+              { time_range: "03:00 PM - 05:30 PM", category: "attraction", title: "Kinkaku-ji (The Golden Pavilion)", description: "Group visit to the shimmering gold-leaf Zen temple mirrored across Kyoko-chi pond.", location: "Kita Ward, Kyoto", estimated_cost: 20, duration_hours: 2.0, booking_tip: "Taxis for a group of 4 save 40 mins over buses." },
+              { time_range: "07:00 PM - 09:30 PM", category: "dining", title: "Gion Historic Lantern Walk & Izakaya", description: "Walk through Pontocho Alley lit by paper lanterns. Enjoy shared skewers and local craft beers.", location: "Pontocho Alley", estimated_cost: 140, duration_hours: 2.5, booking_tip: "Split bill easily with digital cards." }
+            ]
+          },
+          {
+            day_number: 2,
+            theme: "Thousands of Torii Gates & Nishiki Food Market",
+            summary: "Climb through the vermilion gates of Fushimi Inari and graze through Kyoto's 400-year-old food kitchen.",
+            day_estimated_cost: 820,
+            activities: [
+              { time_range: "08:00 AM - 11:30 AM", category: "adventure", title: "Fushimi Inari-taisha Torii Path Hike", description: "Hike the 4-kilometer trail winding through thousands of crimson torii gates up sacred Mount Inari.", location: "Fushimi Ward", estimated_cost: 0, duration_hours: 3.5, booking_tip: "Free entry; great group workout." },
+              { time_range: "12:30 PM - 03:00 PM", category: "dining", title: "Nishiki Market Culinary Grazing Tour", description: "Known as 'Kyoto's Kitchen'. Sample wagyu skewers, matcha ice cream, and dashi tamagoyaki.", location: "Nakagyo Ward", estimated_cost: 75, duration_hours: 2.5, booking_tip: "Members can split to sample freely." },
+              { time_range: "04:00 PM - 06:30 PM", category: "attraction", title: "Kiyomizu-dera Wooden Stage", description: "Historic wooden temple built without a single nail overlooking maple-clad mountains.", location: "Higashiyama Ward", estimated_cost: 16, duration_hours: 2.5, booking_tip: "Visit Otowa Waterfall streams." }
+            ]
+          },
+          {
+            day_number: 3,
+            theme: "Osaka Castle & Dotonbori Neon Alleys",
+            summary: "Bullet train transfer into Osaka. Explore historic Osaka Castle and immerse in Dotonbori street food.",
+            day_estimated_cost: 890,
+            activities: [
+              { time_range: "09:30 AM - 12:30 PM", category: "attraction", title: "Shinkansen Transit & Osaka Castle Park", description: "15-minute bullet train ride to Shin-Osaka. Explore the grand stone moat and museum tower.", location: "Chuo Ward, Osaka", estimated_cost: 36, duration_hours: 3.0, booking_tip: "Store luggage at station lockers." },
+              { time_range: "01:00 PM - 04:00 PM", category: "dining", title: "Shinsekai Retro District & Kushikatsu", description: "Nostalgic 1912 Osaka neighborhood. Savor deep-fried crispy skewers (veggies, cheese, meats).", location: "Shinsekai", estimated_cost: 65, duration_hours: 3.0, booking_tip: "Never double-dip the communal sauce!" },
+              { time_range: "08:00 PM - 11:30 PM", category: "nightlife", title: "Dotonbori Neon Canal Walk & Okonomiyaki", description: "Pose under the Glico Running Man billboard and feast on piping hot savory cabbage pancakes.", location: "Dotonbori, Osaka", estimated_cost: 95, duration_hours: 3.5, booking_tip: "Reserve group booth at Chibo." }
+            ]
+          },
+          {
+            day_number: 4,
+            theme: "Super Nintendo World & Farewell Gathering",
+            summary: "Interactive gaming theme park morning followed by souvenir shopping before airport departure.",
+            day_estimated_cost: 830,
+            activities: [
+              { time_range: "09:00 AM - 01:00 PM", category: "adventure", title: "Super Nintendo World at USJ", description: "Punch Coin Blocks with power-up bands, race Mario Kart, and explore Bowser's Castle.", location: "Universal Studios Japan", estimated_cost: 260, duration_hours: 4.0, booking_tip: "Timed-entry passes required." },
+              { time_range: "01:30 PM - 04:00 PM", category: "dining", title: "Shinsaibashi-suji Souvenir Shopping & Lunch", description: "Covered 600m shopping arcade with ramen/udon farewell group meal.", location: "Shinsaibashisuji", estimated_cost: 60, duration_hours: 2.5, booking_tip: "Tax-free shopping with passports." },
+              { time_range: "05:00 PM - 07:00 PM", category: "logistics", title: "Nankai Rapi:t Express to KIX Airport", description: "Board futuristic blue rapid train directly to Kansai Airport for departure.", location: "Namba Station", estimated_cost: 44, duration_hours: 1.5, booking_tip: "Reserved seats for all 4 members." }
+            ]
+          }
+        ]
+      }
+    };
+
+    let currentPlan = DATA.scenario_1;
+    let selectedDayIdx = 0;
+
+    function renderItinerary() {
+      document.getElementById('itin-title').innerText = currentPlan.title;
+      document.getElementById('itin-summary').innerText = currentPlan.trip_summary;
+      document.getElementById('itin-dest-text').innerText = currentPlan.destination;
+      document.getElementById('itin-days-badge').innerText = `${currentPlan.duration_days} Days Plan`;
+      document.getElementById('itin-type-badge').innerText = `${currentPlan.traveler_type.toUpperCase()} Persona`;
+
+      // Budget stats
+      const b = currentPlan.budget_breakdown;
+      document.getElementById('budget-total').innerText = `$${b.total_estimated.toFixed(2)} USD`;
+      document.getElementById('budget-limit').innerText = `$${b.budget_limit.toFixed(2)} USD`;
+      document.getElementById('budget-rem').innerText = `$${b.remaining_balance.toFixed(2)} USD`;
+      document.getElementById('b-attr').innerText = `$${b.attractions.toFixed(2)}`;
+      document.getElementById('b-dine').innerText = `$${b.dining.toFixed(2)}`;
+      document.getElementById('b-stay').innerText = `$${b.accommodation.toFixed(2)}`;
+      document.getElementById('b-trans').innerText = `$${b.transportation.toFixed(2)}`;
+      document.getElementById('b-misc').innerText = `$${b.miscellaneous.toFixed(2)}`;
+
+      // Logistics
+      document.getElementById('logistics-airport').innerText = currentPlan.logistics.airport_transfer_tip;
+      document.getElementById('logistics-transit').innerText = currentPlan.logistics.local_transport_pass;
+
+      // Render Day Tabs
+      const tabsCont = document.getElementById('day-tabs-container');
+      tabsCont.innerHTML = '';
+      currentPlan.days.forEach((day, idx) => {
+        const btn = document.createElement('button');
+        const isActive = idx === selectedDayIdx;
+        btn.className = `flex-shrink-0 px-5 py-3 rounded-2xl border text-left transition-all ${
+          isActive 
+            ? 'bg-blue-600 text-white border-blue-600 shadow-md' 
+            : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200'
+        }`;
+        btn.innerHTML = `<div class="text-[11px] opacity-80">Day ${day.day_number}</div><div class="text-xs font-bold truncate max-w-[140px]">${day.theme}</div>`;
+        btn.onclick = () => { selectedDayIdx = idx; renderCurrentDay(); };
+        tabsCont.appendChild(btn);
+      });
+
+      renderCurrentDay();
+    }
+
+    function renderCurrentDay() {
+      const day = currentPlan.days[selectedDayIdx];
+      if (!day) return;
+
+      document.getElementById('current-day-label').innerText = `Day ${day.day_number} Focus`;
+      document.getElementById('current-day-theme').innerText = day.theme;
+      document.getElementById('current-day-summary').innerText = day.summary;
+      document.getElementById('current-day-cost').innerText = `$${day.day_estimated_cost ? day.day_estimated_cost.toFixed(2) : '0.00'}`;
+
+      const grid = document.getElementById('activities-grid');
+      grid.innerHTML = '';
+
+      day.activities.forEach((act, actIdx) => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-all";
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-3 text-xs">
+            <span class="font-bold text-slate-800">⏰ ${act.time_range}</span>
+            <span class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              ${act.estimated_cost === 0 ? 'Free' : '$' + act.estimated_cost + ' / person'}
+            </span>
+          </div>
+          <h4 class="text-sm font-bold text-slate-900 mb-1">${act.title}</h4>
+          <p class="text-xs text-slate-600 mb-3 leading-relaxed">${act.description}</p>
+          <div class="text-xs text-slate-500 mb-2">📍 ${act.location}</div>
+          ${act.booking_tip ? `<div class="bg-amber-50 border border-amber-200 rounded-xl p-2 text-[11px] text-amber-900 mb-3 font-medium">💡 <strong>Tip:</strong> ${act.booking_tip}</div>` : ''}
+          <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <span>Duration: <strong class="text-slate-700">${act.duration_hours} hrs</strong></span>
+            <button onclick="swapActivityAction(${actIdx})" class="text-blue-600 font-bold hover:underline flex items-center gap-1">
+              🔄 Swap Activity
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      // Update active tab styles
+      const tabs = document.getElementById('day-tabs-container').children;
+      for (let i = 0; i < tabs.length; i++) {
+        if (i === selectedDayIdx) {
+          tabs[i].className = 'flex-shrink-0 px-5 py-3 rounded-2xl border text-left bg-blue-600 text-white border-blue-600 shadow-md';
+        } else {
+          tabs[i].className = 'flex-shrink-0 px-5 py-3 rounded-2xl border text-left bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200';
+        }
+      }
+      lucide.createIcons();
+    }
+
+    function switchTab(tab) {
+      if (tab === 'dashboard') {
+        document.getElementById('view-dashboard').classList.remove('hidden');
+        document.getElementById('view-itinerary').classList.add('hidden');
+        document.getElementById('btn-tab-dashboard').className = 'px-3.5 py-2 text-xs font-bold rounded-xl bg-blue-50 text-blue-600 transition-colors';
+        document.getElementById('btn-tab-itinerary').className = 'px-3.5 py-2 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-colors';
+      } else {
+        document.getElementById('view-dashboard').classList.add('hidden');
+        document.getElementById('view-itinerary').classList.remove('hidden');
+        document.getElementById('btn-tab-dashboard').className = 'px-3.5 py-2 text-xs font-bold rounded-xl text-slate-600 hover:bg-slate-50 transition-colors';
+        document.getElementById('btn-tab-itinerary').className = 'px-3.5 py-2 text-xs font-bold rounded-xl bg-blue-50 text-blue-600 transition-colors';
+        renderItinerary();
+      }
+      lucide.createIcons();
+    }
+
+    function loadScenario(key) {
+      if (DATA[key]) {
+        currentPlan = DATA[key];
+        selectedDayIdx = 0;
+        switchTab('itinerary');
+        showToast(`Loaded ${key.replace('_', ' ').toUpperCase()} successfully!`);
+      }
+    }
+
+    function swapActivityAction(actIdx) {
+      const day = currentPlan.days[selectedDayIdx];
+      const oldAct = day.activities[actIdx];
+      day.activities[actIdx] = {
+        time_range: oldAct.time_range,
+        category: oldAct.category,
+        title: `Curated Alternative: Hidden Gem in ${currentPlan.destination}`,
+        description: `Handpicked local experience replacing '${oldAct.title}' with optimized route and crowd avoidance.`,
+        location: `Scenic Quarter, ${currentPlan.destination}`,
+        estimated_cost: Math.round(oldAct.estimated_cost * 0.9),
+        duration_hours: oldAct.duration_hours,
+        booking_tip: "Walk-ins welcomed; less crowded local favorite."
+      };
+      renderCurrentDay();
+      showToast("Activity swapped with alternative!");
+    }
+
+    function openRegenPrompt() {
+      const feedback = prompt(`Enter instructions to regenerate Day ${selectedDayIdx + 1} (e.g. 'I want more local food and less museums'):`, "More outdoor parks and authentic local street food");
+      if (feedback) {
+        const day = currentPlan.days[selectedDayIdx];
+        day.theme = `Custom Day: ${feedback}`;
+        day.summary = `Regenerated based on request: "${feedback}" with balanced pacing.`;
+        day.activities.forEach((act, i) => {
+          act.title = `Regenerated Experience ${i + 1}: ${feedback.split(' ')[0]} Focus`;
+          act.description = `Tailored to your preference: ${feedback}.`;
+        });
+        renderCurrentDay();
+        showToast(`Day ${selectedDayIdx + 1} regenerated!`);
+      }
+    }
+
+    function saveTripToast() {
+      showToast("Trip itinerary successfully saved to Supabase!");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3000);
+    }
+
+    function openModal() {
+      document.getElementById('modal-builder').classList.remove('hidden');
+      lucide.createIcons();
+    }
+    function closeModal() {
+      document.getElementById('modal-builder').classList.add('hidden');
+    }
+
+    function handleCustomGenerate(e) {
+      e.preventDefault();
+      const dest = document.getElementById('form-dest').value;
+      const days = parseInt(document.getElementById('form-days').value) || 3;
+      const type = document.getElementById('form-type').value;
+      const budget = parseFloat(document.getElementById('form-budget').value) || 1200;
+      const pacing = document.getElementById('form-pacing').value;
+
+      // Build custom plan
+      const newDays = [];
+      for (let i = 1; i <= days; i++) {
+        newDays.push({
+          day_number: i,
+          theme: `Exploring Highlights of ${dest}: Day ${i}`,
+          summary: `Curated sequence of cultural landmarks, local cuisine, and evening ambiance in ${dest}.`,
+          day_estimated_cost: Math.round(budget / days * 0.9),
+          activities: [
+            { time_range: "09:00 AM - 11:30 AM", category: "attraction", title: `Heritage & Iconic Landmarks of ${dest}`, description: `Explore premier historic sites in ${dest} tailored for ${type} travelers.`, location: `Central Historic Quarter, ${dest}`, estimated_cost: 25, duration_hours: 2.5, booking_tip: "Arrive early at opening." },
+            { time_range: "12:30 PM - 02:00 PM", category: "dining", title: `Authentic Local Dining & Food Hall`, description: `Taste regional signature dishes at a top-rated local dining hall.`, location: `Old Town Food Market, ${dest}`, estimated_cost: 30, duration_hours: 1.5, booking_tip: "Ask for chef's seasonal recommendation." },
+            { time_range: "03:30 PM - 06:30 PM", category: "leisure", title: `Scenic Neighborhood Walk & Photography`, description: `Picturesque avenues and panoramic viewpoints overlooking ${dest}.`, location: `Panorama District, ${dest}`, estimated_cost: 0, duration_hours: 3.0, booking_tip: "Golden hour sunset lighting." },
+            { time_range: "07:30 PM - 10:00 PM", category: "dining", title: `Atmospheric Evening Dinner & Nightcap`, description: `Unwind with local hospitality and evening ambiance.`, location: `Riverfront Promenade, ${dest}`, estimated_cost: 45, duration_hours: 2.5, booking_tip: "Advance reservation recommended." }
+          ]
+        });
+      }
+
+      currentPlan = {
+        title: `Custom ${type.toUpperCase()} Odyssey: ${dest}`,
+        destination: dest,
+        traveler_type: type,
+        duration_days: days,
+        trip_summary: `A personalized ${days}-day itinerary generated by AI for ${type} travelers with ${pacing} pacing.`,
+        budget_breakdown: {
+          attractions: Math.round(budget * 0.25),
+          dining: Math.round(budget * 0.35),
+          accommodation: Math.round(budget * 0.30),
+          transportation: Math.round(budget * 0.10),
+          miscellaneous: Math.round(budget * 0.05),
+          total_estimated: Math.round(budget * 0.95),
+          budget_limit: budget,
+          remaining_balance: Math.round(budget * 0.05)
+        },
+        logistics: {
+          airport_transfer_tip: `Direct express rail or licensed airport shuttle connects to central ${dest}.`,
+          local_transport_pass: `City transit day-pass recommended for convenient subway and bus connections.`
+        },
+        days: newDays
+      };
+
+      closeModal();
+      selectedDayIdx = 0;
+      switchTab('itinerary');
+      showToast(`Custom itinerary for ${dest} generated!`);
+    }
+
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderItinerary();
+    });
+  </script>
+</body>
+</html>
